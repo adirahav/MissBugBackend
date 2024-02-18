@@ -1,0 +1,20 @@
+[
+  {
+    "username": "adirahav",
+    "password": "$2b$10$JRIan6GCyou98E0BuA1iRewu7S1YimvDn/yv/d7ChGKZC47FXZunm",
+    "fullname": "Adi Rahav",
+    "_id": "ML3XOR",
+    "createdAt": 1708100219025,
+    "imgURL": "https://res.cloudinary.com/dn4zdrszh/image/upload/v1708020687/missing-avatar_sowwel.jpg"
+  },
+  {
+    "username": "admin",
+    "password": "$2b$10$o5gf3N6Y6R53OwKg5JEDjemZrpSPrfi/O/f/X9k.Xd3gNpP0kDIN6",
+    "fullname": "Admin",
+    "score": 500,
+    "_id": "JCW1ls",
+    "createdAt": 1708161525941,
+    "isAdmin": true,
+    "imgURL": "https://res.cloudinary.com/dn4zdrszh/image/upload/v1708020687/missing-avatar_sowwel.jpg"
+  }
+]

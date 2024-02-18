@@ -1,0 +1,28 @@
+{
+  "name": "miss-bug-proj-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "npm run rimraf node_modules",
+    "rimraf": "rimraf",
+    "dev": "nodemon --ignore \"./data\" server.js",
+    "dev1": "set PORT=3030 & nodemon --ignore \"./data\" server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "bcrypt": "^5.1.1",
+    "chalk": "^5.3.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "cryptr": "^6.3.0",
+    "dotenv": "^16.4.4",
+    "express": "^4.18.2"
+  }
+}
