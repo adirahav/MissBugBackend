@@ -1,108 +1,100 @@
 [
   {
-    "_id": "b101",
-    "title": "Bug title 1",
-    "desc": "Bug desc 1",
+    "_id": "hyuRoE",
+    "title": "Adi's Bug 1",
+    "description": "Adi's Desc 1",
     "severity": 1,
     "labels": [
       "aaa",
-      "bbb",
-      "ccc"
-    ]
+      "bbb"
+    ],
+    "creator": {
+      "_id": "WDHQxF",
+      "fullname": "Adi Rahav"
+    }
   },
   {
-    "_id": "b102",
-    "title": "Bug title 2",
-    "desc": "Bug desc 2",
+    "_id": "kz3V06",
+    "title": "Adi's bug 2",
+    "description": "222",
     "severity": 2,
     "labels": [
-      "aaa"
-    ]
+      "ccc",
+      "ddd"
+    ],
+    "createdAt": 1708280772375,
+    "creator": {
+      "_id": "WDHQxF",
+      "fullname": "Adi Rahav"
+    }
   },
   {
-    "_id": "b103",
-    "title": "Bug title 3",
-    "desc": "Bug desc 3",
+    "_id": "uzgswC",
+    "title": "Maayan's bug 3",
+    "description": "333",
     "severity": 3,
     "labels": [
-      "ccc"
-    ]
-  },
-  {
-    "_id": "b104",
-    "title": "Bug title 4",
-    "desc": "Bug desc 4",
-    "severity": 2,
-    "labels": [
-      "aaabbb",
-      "ccc"
-    ]
-  },
-  {
-    "_id": "b105",
-    "title": "Bug title 5",
-    "desc": "Bug desc 5",
-    "severity": 2,
-    "labels": [
-      "aaa,ccc"
-    ]
-  },
-  {
-    "_id": "b106",
-    "title": "Bug title 6",
-    "desc": "Bug desc 6",
-    "severity": 2,
-    "labels": [
-      "bbb",
-      "ccc"
-    ]
-  },
-  {
-    "_id": "gLXILj",
-    "title": "bug 8",
-    "desc": "888",
-    "severity": 2,
-    "createdAt": 1708102423750
-  },
-  {
-    "_id": "vj76ZJ",
-    "title": "9",
-    "desc": "99",
-    "severity": 99,
-    "labels": [
-      "99"
-    ]
-  },
-  {
-    "_id": "A6XFwa",
-    "title": "10",
-    "desc": "but 10",
-    "severity": 10,
-    "labels": [
-      "10"
-    ]
-  },
-  {
-    "_id": "jjL0Lh",
-    "title": "11",
-    "desc": "bug 11",
-    "severity": 11,
-    "labels": [
-      "11"
-    ]
-  },
-  {
-    "_id": "qUPmYx",
-    "title": "12",
-    "desc": "12",
-    "severity": 12,
-    "labels": [
-      "12"
+      "eee"
     ],
-    "createdAt": 1708111719471,
-    "owner": {
-      "_id": "ML3XOR",
-      "fullname": "Adi Rahav"
+    "createdAt": 1708281033067,
+    "creator": {
+      "_id": "ZmPcAV",
+      "fullname": "Maayan Rahav"
+    }
+  },
+  {
+    "_id": "o1WCxK",
+    "title": "Maayan's bug 4",
+    "description": "444",
+    "severity": 1,
+    "labels": [
+      "aaa",
+      "ccc"
+    ],
+    "createdAt": 1708281054718,
+    "creator": {
+      "_id": "ZmPcAV",
+      "fullname": "Maayan Rahav"
+    }
+  },
+  {
+    "_id": "11SgHg",
+    "title": "Admin's bug 5",
+    "description": "555",
+    "severity": 2,
+    "labels": [
+      "fff"
+    ],
+    "createdAt": 1708281217458,
+    "creator": {
+      "_id": "7SetfW",
+      "fullname": "Admin"
+    }
+  },
+  {
+    "_id": "0lmsHR",
+    "title": "Admin's bug 6",
+    "description": "666",
+    "severity": 3,
+    "labels": [],
+    "createdAt": 1708281247923,
+    "creator": {
+      "_id": "7SetfW",
+      "fullname": "Admin"
+    }
+  },
+  {
+    "_id": "HAljuD",
+    "title": "Admin's Bug 7",
+    "description": "Admin's Desc 7",
+    "severity": 1,
+    "labels": [
+      "yyy"
+    ],
+    "createdAt": 1708323251424,
+    "creator": {
+      "_id": "7SetfW",
+      "fullname": "Admin"
     }
   }
 ]

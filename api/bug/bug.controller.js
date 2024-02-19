@@ -5,19 +5,20 @@ const TAG = "bug.controller"
 
 // list
 export async function getBugs(req, res) {
-    const { txt, severity, minSeverity, labels, pageIdx, sortBy, sortDir } = req.query
+    const { txt, severity, minSeverity, labels, creator, pageIdx, sortBy, sortDir } = req.query
     const filterBy = { 
         txt: txt || '', 
         severity: severity || -1,
         minSeverity: minSeverity || -1,
         labels: labels && labels.trim() !== "" ? labels.split(',').map(label => label.trim()) : [],
+        creator: creator || '', 
         pageIdx: pageIdx || '' 
     }
     loggerService.info(TAG, filterBy)
 
     const sort = { 
         sortBy: sortBy || '', 
-        sortDir: sortDir || '1', // 1: asc | -1: desc
+        sortDir: sortDir || '1', // 1: asc | -1: description
     }
     
     try {
@@ -68,8 +69,8 @@ export async function getBug(req, res) {
 
 // create
 export async function addBug(req, res) {
-    const { _id, title, desc, severity, labels } = req.body 
-    const bugToSave = { _id, title, desc, severity, labels }
+    const { _id, title, description, severity, labels } = req.body 
+    const bugToSave = { _id, title, description, severity, labels }
 
     try {
         const savedBug = await bugService.save(bugToSave, req.loggedinUser)
@@ -82,9 +83,9 @@ export async function addBug(req, res) {
 
 // update
 export async function updateBug(req, res) {
-    const { _id, title, desc, severity, labels, owner } = req.body 
-    const bugToSave = { _id, title, desc, severity, labels, owner }
-
+    const { _id, title, description, severity, labels, creator } = req.body 
+    const bugToSave = { _id, title, description, severity, labels, creator }
+    
     try {
         const savedBug = await bugService.save(bugToSave, req.loggedinUser)
         res.send(savedBug)

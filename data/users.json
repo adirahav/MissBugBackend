@@ -1,20 +1,46 @@
 [
   {
     "username": "adirahav",
-    "password": "$2b$10$JRIan6GCyou98E0BuA1iRewu7S1YimvDn/yv/d7ChGKZC47FXZunm",
+    "password": "$2b$10$RRbnNwp4.9LwhNkefjm71OQj1RLEg1Hkn22DrzO0IC5YKR9CvEB.m",
     "fullname": "Adi Rahav",
-    "_id": "ML3XOR",
-    "createdAt": 1708100219025,
-    "imgURL": "https://res.cloudinary.com/dn4zdrszh/image/upload/v1708020687/missing-avatar_sowwel.jpg"
+    "score": 710,
+    "imgUrl": "https://res.cloudinary.com/dbwxscqid/image/upload/v1708280109/oo2ywyieczobtzqx1p0c.jpg",
+    "_id": "WDHQxF",
+    "createdAt": 1708280114489,
+    "isAdmin": false,
+    "bugsCount": 2
+  },
+  {
+    "username": "maayanrahav",
+    "password": "$2b$10$MUs0Y0j9SWLO5bpIK0ahCeXvDfu62sXWJ9ha1/j6yJt7TrjXuUzL2",
+    "fullname": "Maayan Rahav",
+    "score": 51,
+    "imgUrl": "https://res.cloudinary.com/dbwxscqid/image/upload/v1708280933/llgxbdczaytmcgmt8qfj.jpg",
+    "_id": "ZmPcAV",
+    "createdAt": 1708280942811,
+    "isAdmin": false,
+    "bugsCount": 2
   },
   {
     "username": "admin",
-    "password": "$2b$10$o5gf3N6Y6R53OwKg5JEDjemZrpSPrfi/O/f/X9k.Xd3gNpP0kDIN6",
+    "password": "$2b$10$p.bUK9/1zaL5he1ILqWsIuJDaaWVKtJN12jCRNSFd.QnPmtyzdrRa",
     "fullname": "Admin",
-    "score": 500,
-    "_id": "JCW1ls",
-    "createdAt": 1708161525941,
+    "score": 435,
+    "imgUrl": "https://res.cloudinary.com/dn4zdrszh/image/upload/v1708020687/missing-avatar_sowwel.jpg",
+    "_id": "7SetfW",
+    "createdAt": 1708281101771,
     "isAdmin": true,
-    "imgURL": "https://res.cloudinary.com/dn4zdrszh/image/upload/v1708020687/missing-avatar_sowwel.jpg"
+    "bugsCount": 3
+  },
+  {
+    "username": "lucas",
+    "password": "$2b$10$DP9gjzTieeb8j1RM7lHE1uUj.u40GsFmt7iTgPYKYN9UaEn4EWVTK",
+    "fullname": "Lucas",
+    "score": 893,
+    "imgUrl": "https://res.cloudinary.com/dn4zdrszh/image/upload/v1708291845/WhatsApp_Image_2021-03-17_at_00.42_mqbdhn.jpg",
+    "_id": "v8d78l",
+    "createdAt": 1708291319313,
+    "isAdmin": false,
+    "bugsCount": 0
   }
 ]

@@ -16,30 +16,35 @@ var bugs = utilService.readJsonFile('./data/bugs.json')
 async function query(sort, filterBy) {
     
     try {
-        
+        loggerService.debug("filterBy: " + JSON.stringify(filterBy))
         var filteredBugs = bugs.filter(bug => {
             const matchesSeverity = !filterBy.severity 
                 || +filterBy.severity === -1 
                 || +bug.severity === +filterBy.severity
-
+            
             const matchesMinSeverity = !filterBy.minSeverity 
                 || +filterBy.minSeverity === -1 
                 || +filterBy.minSeverity >= +bug.severity
-
+            
             const matchesText = !filterBy.txt 
                 || bug.title.toLowerCase().includes(filterBy.txt.toLowerCase()) 
-                || (bug.desc && bug.desc.toLowerCase().includes(filterBy.txt.toLowerCase()))
-
+                || (bug.description && bug.description.toLowerCase().includes(filterBy.txt.toLowerCase()))
+                
             const matchesLabel = !filterBy.labels 
                 || filterBy.labels.length === 0  
                 || filterBy.labels.some((label) =>
                   bug.labels?.some((bugLabel) => bugLabel === label)
                 )
-
-            return matchesSeverity && matchesMinSeverity && matchesText && matchesLabel
+                
+            const matchesCreator = !filterBy.creator 
+                || filterBy.creator === '' 
+                || bug.creator._id === filterBy.creator
+            
+            return matchesSeverity && matchesMinSeverity && matchesText && matchesLabel && matchesCreator
         }) 
+        loggerService.debug(filteredBugs.length)
         
-        if (sort.sortBy !== '') {
+        if (sort !== null && sort.sortBy !== '') {
             filteredBugs = filteredBugs.sort((a, b) => {
                 if (typeof a[sort.sortBy] === 'string') {
                     return a[sort.sortBy].localeCompare(b[sort.sortBy]) * sort.sortDir
@@ -48,19 +53,19 @@ async function query(sort, filterBy) {
                 }
             })
         }
-
+        
         let bugsToReturn = [...filteredBugs] 
-        if (filterBy.pageIdx !== '') {
+        if (filterBy.pageIdx && filterBy.pageIdx !== '') {
             const startIdx = (+filterBy.pageIdx - 1) * PAGE_SIZE
             const endIdx = startIdx + PAGE_SIZE
             bugsToReturn = bugsToReturn.slice(startIdx, endIdx)
         }
-
-        const paging = filterBy.pageIdx !== '' ? {
+        
+        const paging = filterBy.pageIdx && filterBy.pageIdx !== '' ? {
             length: filteredBugs.length,
             maxPages: Math.ceil(filteredBugs.length / PAGE_SIZE)
         } : null
-
+        
         return {
             paging,
             list: bugsToReturn
@@ -89,7 +94,7 @@ async function remove(bugId, loggedinUser) {
     }
 
     const bug = bugs[idx]
-    if (!loggedinUser.isAdmin && bug.owner?._id !== loggedinUser._id) {
+    if (!loggedinUser.isAdmin && bug.creator?._id !== loggedinUser._id) {
         throw { msg: 'Not your bug', code: 403 }
     }
 
@@ -115,7 +120,7 @@ async function save(bugToSave, loggedinUser) {
 
             const bug = bugs[idx]
             
-            if (!loggedinUser.isAdmin && bug.owner?._id !== loggedinUser._id) {
+            if (!loggedinUser.isAdmin && bug.creator?._id !== loggedinUser._id) {
                 throw { msg: 'Not your bug', code: 403 }
             }
             
@@ -124,7 +129,7 @@ async function save(bugToSave, loggedinUser) {
         } else {
             bugToSave._id = utilService.makeId()
             bugToSave.createdAt = Date.now()
-            bugToSave.owner = { _id: loggedinUser._id, fullname: loggedinUser.fullname }
+            bugToSave.creator = { _id: loggedinUser._id, fullname: loggedinUser.fullname }
     
             bugs.push(bugToSave)
         }

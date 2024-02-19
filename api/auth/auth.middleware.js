@@ -1,7 +1,9 @@
-import { authService } from "../api/auth/auth.service.js"
-import { loggerService } from "../services/logger.service.js"
+import { authService } from "./auth.service.js"
+import { loggerService } from "../../services/logger.service.js"
 
-export async function requireUser(req, res, next) {
+const TAG = "auth.middleware"
+
+export async function requireAuth(req, res, next) {
     const loggedinUser = await authService.getLoggedinUser(req)
     
     if (!loggedinUser) {

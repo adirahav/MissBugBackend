@@ -1,5 +1,7 @@
 import { loggerService } from "../../services/logger.service.js";
 import { utilService } from "../../services/util.service.js";
+import { authService } from "../auth/auth.service.js";
+import { bugService } from "../bug/bug.service.js";
 
 export const userService = {
     query,
@@ -48,6 +50,15 @@ async function remove(userId) {
         throw 'Bad Id'
     }
 
+    const sort = null
+    const filterBy = { creator: userId }
+    const bugs = await bugService.query(sort, filterBy)
+    
+    if ( bugs.list.length > 0) {
+        throw `User cannot removed`
+    }
+    
+
     users.splice(idx, 1)
     
     try {
@@ -60,21 +71,30 @@ async function remove(userId) {
     return `User ${userId} removed`
 }
 
-async function save(userToSave) {
+async function save(userToSave, loggedinUser) {
     try {
         if (userToSave._id) {
             const idx = users.findIndex(user => user._id === userToSave._id)
             if (idx === -1) {
                 throw 'Bad Id'
             }
+            
+            if (!loggedinUser.isAdmin && userToSave._id !== loggedinUser._id) {
+                throw { msg: 'Not your user', code: 403 }
+            }
+
+            userToSave.password = await authService.hashPassword(userToSave.password)
 
             users.splice(idx, 1, userToSave)
         } else {
             userToSave._id = utilService.makeId()
             userToSave.createdAt = Date.now()
             userToSave.isAdmin = false
-            if (!userToSave.imgURL) {
-                userToSave.imgURL = "https://res.cloudinary.com/dn4zdrszh/image/upload/v1708020687/missing-avatar_sowwel.jpg"
+            userToSave.password = await authService.hashPassword(userToSave.password)
+            userToSave.score = Math.floor(Math.random() * 1000) + 1
+            
+            if (!userToSave.imgUrl) {
+                userToSave.imgUrl = "https://res.cloudinary.com/dn4zdrszh/image/upload/v1708020687/missing-avatar_sowwel.jpg"
             }
 
             users.push(userToSave)

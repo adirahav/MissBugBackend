@@ -11,7 +11,8 @@ export const authService = {
     validateToken,
     login,
     signup,
-    getLoggedinUser
+    getLoggedinUser,
+    hashPassword
 }
 
 async function getLoginToken(user) {
@@ -47,8 +48,8 @@ async function login(username, password) {
         const miniUser =  {
             _id: user._id,
             fullname: user.fullname,
-            imgURL: user.imgURL,
             score: user.score,
+            imgUrl: user.imgUrl,
             isAdmin: user.isAdmin
         }
 
@@ -60,7 +61,7 @@ async function login(username, password) {
     }
 }
 
-async function signup({ username, password, fullname, score }) {
+async function signup({ username, password, fullname, score, imgUrl }) {
     
     try {
         loggerService.debug(TAG, `signup with username: ${username}, fullname: ${fullname}`)
@@ -74,9 +75,7 @@ async function signup({ username, password, fullname, score }) {
             throw 'Username already taken'
         }
 
-        const saltRounds = 10
-        const hashedPassword = await bcrypt.hash(password, saltRounds)
-        return userService.save({username, password: hashedPassword, fullname, score})
+        return userService.save({username, password: password, fullname, score, imgUrl })
 
     } catch(err) {
         loggerService.error(TAG, `Had problems signup ${username}`, err)
@@ -89,4 +88,10 @@ async function getLoggedinUser(req) {
     const loggedinUser = await validateToken(req.cookies.loginToken)
     console.log(`loggedinUser: `, loggedinUser)
     return loggedinUser
+}
+
+async function hashPassword(password) {
+    const saltRounds = 10
+    const hashedPassword = await bcrypt.hash(password, saltRounds)
+    return hashedPassword
 }
