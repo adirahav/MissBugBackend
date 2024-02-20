@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 import { loggerService } from './services/logger.service.js'
 
 const corsOptions = {
-    origin: ['http://127.0.0.1:5173', 'http://localhost:5173'],
+    origin: ['http://127.0.0.1:5175', 'http://localhost:5175'],
     credentials: true
 }
 
@@ -41,7 +41,7 @@ app.get('/**', (req, res) => {
 })
 
 dotenv.config()
-const PORT = process.env.PORT || 5175 
+const PORT = process.env.PORT || 5176 
 app.listen(PORT, () => {
     loggerService.info(`Server ready at port ${PORT}`)
 })

@@ -16,7 +16,7 @@ var bugs = utilService.readJsonFile('./data/bugs.json')
 async function query(sort, filterBy) {
     
     try {
-        loggerService.debug("filterBy: " + JSON.stringify(filterBy))
+        
         var filteredBugs = bugs.filter(bug => {
             const matchesSeverity = !filterBy.severity 
                 || +filterBy.severity === -1 
@@ -42,7 +42,6 @@ async function query(sort, filterBy) {
             
             return matchesSeverity && matchesMinSeverity && matchesText && matchesLabel && matchesCreator
         }) 
-        loggerService.debug(filteredBugs.length)
         
         if (sort !== null && sort.sortBy !== '') {
             filteredBugs = filteredBugs.sort((a, b) => {
